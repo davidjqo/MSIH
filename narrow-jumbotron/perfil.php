@@ -99,7 +99,10 @@ if(isset($_POST['change_image'])) {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,6 +117,7 @@ if(isset($_POST['change_image'])) {
     <!-- Title Page-->
     <title>Perfil</title>
 
+<<<<<<< HEAD
   <!--Lista de CSS-->
   <?php include "librerias.php"  ?>
 
@@ -123,17 +127,184 @@ if(isset($_POST['change_image'])) {
       }
   
   </style>
+=======
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 
 </head>
 
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
+<<<<<<< HEAD
         
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
         <?php include "sidebar.php"?>
+=======
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                       
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="dash.php">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                       
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li>
+                            <a href="table.html">
+                                <i class="fas fa-table"></i>Tables</a>
+                        </li>
+                        <li>
+                            <a href="form.html">
+                                <i class="far fa-check-square"></i>Forms</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li>
+                            <a href="map.html">
+                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Pages</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="login.html">Login</a>
+                                </li>
+                                <li>
+                                    <a href="register.html">Register</a>
+                                </li>
+                                <li>
+                                    <a href="forget-pass.html">Forget Password</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-desktop"></i>UI Elements</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="button.html">Button</a>
+                                </li>
+                                <li>
+                                    <a href="badge.html">Badges</a>
+                                </li>
+                                <li>
+                                    <a href="tab.html">Tabs</a>
+                                </li>
+                                <li>
+                                    <a href="card.html">Cards</a>
+                                </li>
+                                <li>
+                                    <a href="alert.html">Alerts</a>
+                                </li>
+                                <li>
+                                    <a href="progress-bar.html">Progress Bars</a>
+                                </li>
+                                <li>
+                                    <a href="modal.html">Modals</a>
+                                </li>
+                                <li>
+                                    <a href="switch.html">Switchs</a>
+                                </li>
+                                <li>
+                                    <a href="grid.html">Grids</a>
+                                </li>
+                                <li>
+                                    <a href="fontawesome.html">Fontawesome Icon</a>
+                                </li>
+                                <li>
+                                    <a href="typo.html">Typography</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+            <p>Control de acuerdos MSIH</p>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="dash.php">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-chart-bar"></i>Perfil</a>
+                        </li>
+                        <li  class="has-sub">
+                        <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Acuerdos</a>
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="acuerdos.php"> 1 .Crear acuerdos</a>
+                                </li>
+                                <li>
+                                    <a href="verAcuerdos.php"> 2 .ver acuerdos </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Calendario</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -305,6 +476,7 @@ if(isset($_POST['change_image'])) {
                                     <div class="card-body card-block">
                                         <div class="form-group">
                                             <label for="company" class=" form-control-label">Nombre</label>
+<<<<<<< HEAD
                                             <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-user"></i>
@@ -341,6 +513,18 @@ if(isset($_POST['change_image'])) {
 
 
 
+=======
+                                            <input type="text" id="company" placeholder="<?php echo $_SESSION['user_name'] ?>" class="form-control" name="user_name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">Email</label>
+                                            <input type="text" id="vat" placeholder="<?php echo $_SESSION['user_email'] ?>" class="form-control" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="street" class=" form-control-label">Departamento</label>
+                                            <input type="text" id="disabled-input" name="disabled-input" disabled=""placeholder="Informatica" class="form-control">
+                                        </div>
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
                                      <div>
                                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block" name="change_name">
                                                    
@@ -370,6 +554,7 @@ if(isset($_POST['change_image'])) {
                                         <div class="form-group">
                                             
                                             <label for="company" class=" form-control-label">Contraseña actual</label>
+<<<<<<< HEAD
                                             <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-asterisk"></i>
@@ -427,6 +612,44 @@ if(isset($_POST['change_image'])) {
                                         
 </div>
             
+=======
+<input type="password" id="company" placeholder="" class="form-control" name="current_password" 
+>
+                                            <div class="name-error error">
+                                         <?php if(isset($current_password_error)): ?>
+
+                                      <?php echo $current_password_error; ?>
+
+                                      <?php endif; ?>
+                                        </div>
+                                        
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">Nueva contraseña</label>
+                                            <input type="password" id="vat" placeholder="" class="form-control" name="new_password"
+                                           >
+                                            <div class="name-error error">
+                  <?php if(isset($new_password_error)): ?>
+
+                     <?php echo $new_password_error; ?>
+
+                  <?php endif; ?>
+               </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="street" class=" form-control-label">Vuelva a escribir la contraseña</label>
+                                            <input type="password" id="street" placeholder="" class="form-control" name="retype_password" 
+                                           >
+                                            <div class="name-error error">
+                  <?php if(isset($retype_password_error)): ?>
+
+                     <?php echo $retype_password_error; ?>
+
+                  <?php endif; ?>
+               </div>
+                                        </div>
+                                      
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 
 
 
@@ -498,9 +721,36 @@ if(isset($_POST['change_image'])) {
 
     </div>
 
+<<<<<<< HEAD
   <!--Lista de Scrips-->
 
 <?php include "scripts.php" ?>
+=======
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 </body>
 
 </html>

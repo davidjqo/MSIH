@@ -47,7 +47,11 @@ body {
 .jumbotron {
   text-align: center;
   color:white;
+<<<<<<< HEAD
   background-image: url("../dist/img/acuerdo.png");
+=======
+  background-image: url("../dist/img/pluma.jpg");
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: cover;

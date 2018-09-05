@@ -16,13 +16,19 @@ if (isset($_POST['login'])) {
             $user_id = $row->id;
             $user_name = $row->name;
             $user_image = $row->image;
+<<<<<<< HEAD
             $user_status = $row->status;
+=======
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
             if (password_verify($password, $db_password)) {
                 $obj->Create_Session("user_name", $user_name);
                 $obj->Create_Session("user_id", $user_id);
                 $obj->Create_Session("user_email", $db_email);
                 $obj->Create_Session("user_image", $user_image);
+<<<<<<< HEAD
                 $obj->Create_Session("user_status", $user_status);
+=======
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
                 header("location:dash.php");
             } else {
                 header("location: ../narrow-jumbotron/login.php?login=password");
@@ -31,6 +37,7 @@ if (isset($_POST['login'])) {
         }
     }
 }
+<<<<<<< HEAD
 
 
 
@@ -39,6 +46,10 @@ if (isset($_POST['login'])) {
 
 
 
+=======
+?>
+
+>>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 <!DOCTYPE html>
 <html lang="en">
 <head>
