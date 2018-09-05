@@ -2,35 +2,23 @@
 include "init.php";
 $obj = new base_class;
 if (isset($_POST['enviar'])) {
-<<<<<<< HEAD
     $nombre = $obj->security($_POST['nombre']);
     $email = $obj->security($_POST['email']);
     $contraseña = $obj->security($_POST['contraseña']);
-=======
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $contraseña = $_POST['contraseña'];
->>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
     $img_name = $_FILES['img']['name'];
     $img_tmp = $_FILES['img']['tmp_name'];
     $img_path = "../dist/img/";
     $extensions = ['jpg', 'jpeg', 'png'];
-<<<<<<< HEAD
     
 
     $status = 0;
     $rol=2;
-=======
-
-    $status = 0;
->>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
     $clean_status = 0;
 
     move_uploaded_file($img_tmp, "$img_path/$img_name");
 
     //Manejo de errores
     //Revisar espacios vacios
-<<<<<<< HEAD
     
     if ($obj->Normal_Query("SELECT * FROM users WHERE email = ?", [$email])) {
         if ($obj->Count_Rows() == 1) {
@@ -49,11 +37,6 @@ if (isset($_POST['enviar'])) {
 
 
 
-=======
-    if (empty($nombre) || empty($email) || empty($contraseña) || empty($img_name)) {
-        header("location: ../narrow-jumbotron/registro.php?registro=vacio");
-        exit();
->>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
     } /*else {
         //Revisar si los caracteres de entrada son validos
         if (!preg_match("/^[a-aA-Z]*$", $nombre)) {
@@ -64,34 +47,12 @@ if (isset($_POST['enviar'])) {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 header("location: ../narrow-jumbotron/registro.php?registro=email");
                 exit();
-<<<<<<< HEAD
             }*/ 
                 
             
         //}
     //}
  
-=======
-            }*/ else {
-                if ($obj->Normal_Query("SELECT * FROM users WHERE email = ?", [$email])) {
-                    if ($obj->Count_Rows() == 1) {
-                        header("location: ../narrow-jumbotron/registro.php?registro=emailUsado");
-                        exit();
-                    }
-                } else {
-                    //encriptando la contrasenna
-                    $hashhedPwd = password_hash($contraseña, PASSWORD_DEFAULT);
-                    //Insertar en la base de datos
-                    $obj->Normal_Query("INSERT INTO users (name, email, password, image, status) 
-                        VALUES (?,?,?,?,?)", [$nombre, $email, $hashhedPwd, $img_name, $status]);
-                    header("location: ../narrow-jumbotron/registro.php?registro=correcto");
-                    exit();
-                }
-            }
-        //}
-    //}
-} 
->>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 ?>
 
 <!DOCTYPE html>
@@ -107,16 +68,11 @@ if (isset($_POST['enviar'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href="narrow-jumbotron.css" rel="stylesheet">
-<<<<<<< HEAD
   
 </head>
 
 
 
-=======
-</head>
-
->>>>>>> 5c840d11ee52d915ef5b386464b2818502a2b4cd
 <body>
     <div class="container">
         <div class="header clearfix">
