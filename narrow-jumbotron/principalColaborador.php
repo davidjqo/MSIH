@@ -1,24 +1,21 @@
-<?php include "init.php"; 
+<?php include "init.php";
 $obj = new base_class;
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
-
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
     <title>Dashboard</title>
 
-<!--Lista de CSS-->
-  <?php include "librerias.php"  ?>
-
+    <!--Lista de CSS-->
+    <?php include "librerias.php" ?>
 </head>
 
 <body class="animsition">
@@ -28,7 +25,7 @@ $obj = new base_class;
         <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
-     <?php include "sidebarColaborador.php"?>
+        <?php include "sidebarColaborador.php" ?>
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
@@ -41,14 +38,7 @@ $obj = new base_class;
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                      
                         <div class="row m-t-25">
-                         
-                        
-                            
-                          
-                        
-                        
 
                             <div class="col-lg-6">
                                 <div class="au-card m-b-30">
@@ -67,68 +57,28 @@ $obj = new base_class;
                                     </div>
                                 </div>
                             </div>
-
-
-                          
-
-                            
-
-
-
-                         
+ 
                         </div>
 
-                
-                       
-                        
-
-
-
-
-
-
-
-
-
-
-
-
-    
                         <!--final del contenedor-->
 
-                        
-                        
+                        <!--
+                        <div>
+                        <p>Mostrando usuarios registrados en el sistema</p>
 
-<!--
-<div>
-<p>Mostrando usuarios registrados en el sistema</p>
+                        Consulta a la base de datos en PDO
+                        $obj->Normal_Query("SELECT  * FROM users");
+                        $message_row=$obj-> fetch_all();
 
-Consulta a la base de datos en PDO
-$obj->Normal_Query("SELECT  * FROM users");
-$message_row=$obj-> fetch_all();
-
-foreach($message_row as $row):
-    echo $row->name,"<br>";
-    echo $row->id,"<br>";
-    echo $row->email,"<br>";
-    echo $row->image,"<br>";
-    echo $row->status,"<br>";
-endforeach;
-
-
--->
-
-
-
-
-
-
-
-
-
-
-
- <div class="row">
+                        foreach($message_row as $row):
+                            echo $row->name,"<br>";
+                            echo $row->id,"<br>";
+                            echo $row->email,"<br>";
+                            echo $row->image,"<br>";
+                            echo $row->status,"<br>";
+                        endforeach;
+                        -->
+                    <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
                                 <h3 class="title-5 m-b-35">Usuarios registrados</h3>
@@ -153,67 +103,47 @@ endforeach;
                                         <button class="au-btn-filter">
                                             <i class="zmdi zmdi-filter-list"></i>Filtros</button>
                                     </div>
-                                   
                                 </div>
+
                                 <div class="table-responsive table-responsive-data2">
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                               
-                                                <th>Id</th>
+                                                <th>ID</th>
                                                 <th>Nombre</th>
                                                 <th>Correo</th>
-                                                <th>imagen</th>
+                                                <th>Imagen</th>
                                                 <th>Estado</th>
-                                                
-                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-$obj->Normal_Query("SELECT  * FROM users");
-$message_row=$obj-> fetch_all();
-
-foreach($message_row as $row):
-    ?>
-                                            <tr class="tr-shadow">
-                                                
-                                                <td><?php echo $row->id,"<br>";?></td>
-                                                <td>
-                                                    <span class="block-email"><?php echo $row->name,"<br>";?></span>
-                                                </td>
-                                                <td class="desc"><?php echo $row->email,"<br>";?></td>
-                                                <td><?php echo $row->image,"<br>";?></td>
-                                                <td>
-                                                    <span class="status--process"><?php echo $row->status,"<br>";?></span>
-                                                </td>
-                                                
-                                              
-                                            </tr>
-                                            <tr class="spacer"></tr>
-                                            <?php
+                                        $obj->Normal_Query("SELECT  * FROM usuarios");
+                                        $message_row = $obj->fetch_all();
+                                        foreach ($message_row as $row) :
+                                        ?>
+                                        <tr class="tr-shadow">
+                                
+                                            <td><?php echo $row->id_usuario, "<br>"; ?></td>
+                                            <td>
+                                                <span class="block-email"><?php echo $row->nombre, "<br>"; ?></span>
+                                            </td>
+                                            <td class="desc"><?php echo $row->email, "<br>"; ?></td>
+                                            <td><?php echo $row->image, "<br>"; ?></td>
+                                            <td>
+                                                <span class="status--process"><?php echo $row->status, "<br>"; ?></span>
+                                            </td>    
+                                        </tr>
+                                        <tr class="spacer"></tr>
+                                        <?php
                                         endforeach;
                                         ?>
-                                           
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- END DATA TABLE -->
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                         <div class="row">
                             <div class="col-md-12">

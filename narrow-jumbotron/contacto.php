@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link href='../dist/css/custom.css' rel='stylesheet' type='text/css'>
     <link href="narrow-jumbotron.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="../dist/img/logo.jpg"/>
 </head>
 
 <body>

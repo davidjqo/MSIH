@@ -3,41 +3,39 @@ include "init.php";
 $obj = new base_class;
 if (isset($_POST['enviar'])) {
     $nombre = $obj->security($_POST['nombre']);
+    $apellido = $obj->security($_POST['apellido']);
     $email = $obj->security($_POST['email']);
     $contraseña = $obj->security($_POST['contraseña']);
     $img_name = $_FILES['img']['name'];
     $img_tmp = $_FILES['img']['tmp_name'];
     $img_path = "../dist/img/";
     $extensions = ['jpg', 'jpeg', 'png'];
-    
 
     $status = 0;
-    $rol=2;
+    $rol = 2;
     $clean_status = 0;
 
     move_uploaded_file($img_tmp, "$img_path/$img_name");
 
     //Manejo de errores
     //Revisar espacios vacios
-    
-    if ($obj->Normal_Query("SELECT * FROM users WHERE email = ?", [$email])) {
+
+    if ($obj->Normal_Query("SELECT * FROM usuarios WHERE email = ?", [$email])) {
         if ($obj->Count_Rows() == 1) {
-            }else{
-                echo "Email ya registrado";
-            }
+        } else {
+            echo "¡Email ya registrado!";
         }
+    }
         //encriptando la contrasenna
-        $hashhedPwd = password_hash($contraseña, PASSWORD_DEFAULT);
+    $hashhedPwd = password_hash($contraseña, PASSWORD_DEFAULT);
         //Insertar en la base de datos
-        if($obj->Normal_Query("INSERT INTO users (name, email, password, image, status) 
-            VALUES (?,?,?,?,?)", [$nombre, $email, $hashhedPwd, $img_name, $status])){
-       $obj->Create_Session("account_success", "Your account is successfully created");
-       header("location:login.php");
-            }
+    if ($obj->Normal_Query("INSERT INTO usuarios (nombre, primer_apellido, email, password, image, status) 
+            VALUES (?,?,?,?,?,?)", [$nombre, $apellido, $email, $hashhedPwd, $img_name, $status])) {
+        $obj->Create_Session("account_success", "Your account is successfully created");
+        header("location:login.php");
+    }
 
-
-
-    } /*else {
+} /*else {
         //Revisar si los caracteres de entrada son validos
         if (!preg_match("/^[a-aA-Z]*$", $nombre)) {
             header("location: ../narrow-jumbotron/registro.php?registro=invalido");
@@ -52,7 +50,6 @@ if (isset($_POST['enviar'])) {
             
         //}
     //}
- 
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +65,8 @@ if (isset($_POST['enviar'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href="narrow-jumbotron.css" rel="stylesheet">
-  
+    <link rel="icon" type="image/jpg" href="../dist/img/logo.jpg"/>
 </head>
-
-
 
 <body>
     <div class="container">
@@ -101,17 +96,35 @@ if (isset($_POST['enviar'])) {
         <form method="POST" action="" enctype="multipart/form-data"><!-- Inicio del formulario-->
 
         <?php 
-            $fullUrl = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $fullUrl = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
-            if (strpos($fullUrl, "registro=vacio") == true) {
-                echo "<strong style='color:red;'>* Complete los espacios vacíos.</strong>";
-            }
+        if (strpos($fullUrl, "registro=vacio") == true) {
+            echo "<strong style='color:red;'>* Complete los espacios vacíos.</strong>";
+        }
         ?>
 
             <div class="form-row">
                 <div class="col form-group">
                     <label>* Nombre</label>   
                     <input type="text" name="nombre" class="form-control" placeholder="">
+                </div> <!-- form-group end.// -->
+                
+            </div> <!-- form-row end.// -->
+            <?php 
+            $fullUrl = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if (strpos($fullUrl, "registro=nombreVacio") == true) {
+                echo "<p style='color:red;'>Ingrese un nombre.</p>";
+            }
+            if (strpos($fullUrl, "registro=invalido") == true) {
+                echo "<p style='color:red;'>Ingrese un nombre válido.</p>";
+            }
+            ?>
+
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>* Primer apellido</label>   
+                    <input type="text" name="apellido" class="form-control" placeholder="">
                 </div> <!-- form-group end.// -->
                 
             </div> <!-- form-row end.// -->
