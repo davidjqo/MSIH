@@ -128,6 +128,7 @@ if(isset($_POST['change_image'])) {
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
+                            
                             <div class="header-button">
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
