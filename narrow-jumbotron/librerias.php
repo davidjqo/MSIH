@@ -1,5 +1,5 @@
 <!-- Logo Muni -->
-<link rel="icon" type="image/jpg" href="../dist/img/logo.jpg"/>
+<link rel="icon" type="image/png" href="../dist/img/logoMuni.png"/>
 
 <!-- Fontfaces CSS-->
 <link href="css/font-face.css" rel="stylesheet" media="all">

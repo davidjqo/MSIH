@@ -46,7 +46,7 @@ if (isset($_POST['login'])) {
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <link href="narrow-jumbotron.css" rel="stylesheet">
-        <link rel="icon" type="image/jpg" href="../dist/img/logo.jpg"/>
+        <link rel="icon" type="image/png" href="../dist/img/logoMuni.png"/>
     </head>
 
     <style>
