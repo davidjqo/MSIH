@@ -33,7 +33,6 @@ html.lb-disable-scrolling {
   max-width: inherit;
   max-height: none;
   border-radius: 3px;
-
   /* Image border */
   border: 4px solid white;
 }
@@ -49,7 +48,6 @@ html.lb-disable-scrolling {
   height: 250px;
   margin: 0 auto;
   border-radius: 4px;
-
   /* Background color behind image.
      This is visible during transitions. */
   background-color: white;
@@ -88,7 +86,7 @@ html.lb-disable-scrolling {
   z-index: 10;
 }
 
-.lb-container > .nav {
+.lb-container>.nav {
   left: 0;
 }
 
@@ -97,7 +95,8 @@ html.lb-disable-scrolling {
   background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
 }
 
-.lb-prev, .lb-next {
+.lb-prev,
+.lb-next {
   height: 100%;
   cursor: pointer;
   display: block;

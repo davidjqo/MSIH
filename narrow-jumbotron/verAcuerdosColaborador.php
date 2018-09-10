@@ -1,7 +1,7 @@
-<?php include "init.php"; 
+<?php include "init.php";
 $obj = new base_class;
 ?>
-<?php if(!isset($_SESSION["user_id"])): ?>
+<?php if (!isset($_SESSION["user_id"])) : ?>
 <?php header("location:login.php"); ?>
 <?php endif; ?>
 
@@ -19,7 +19,7 @@ $obj = new base_class;
         <title>Acuerdos</title>
 
         <!--Lista de CSS-->
-        <?php include "librerias.php"  ?>
+        <?php include "librerias.php" ?>
     </head>
 
     <body class="animsition">
@@ -29,7 +29,7 @@ $obj = new base_class;
             <!-- END HEADER MOBILE-->
 
             <!-- MENU SIDEBAR-->
-            <?php include "sidebarColaborador.php"?>
+            <?php include "sidebarColaborador.php" ?>
             <!-- END MENU SIDEBAR-->
 
             <!-- PAGE CONTAINER-->
@@ -68,6 +68,13 @@ $obj = new base_class;
                                         <i class="zmdi zmdi-filter-list"></i>Filtros</button>
                                     </div>                                  
                                 </div>
+                                <form class="form-header" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                                        <input class="au-input au-input--xl" type="text" name="buscar" placeholder="Buscar..."/>
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
                                 <div class="table-responsive table-responsive-data2">
                                     <table class="table table-data2">
                                         <thead>
@@ -77,28 +84,37 @@ $obj = new base_class;
                                                 <th>Acuerdo</th>
                                                 <th>Archivo</th>
                                                 <th>Creación</th>
-                                                <th>Finiquito</th>  
+                                                <th>Finiquito</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $obj->Normal_Query("SELECT  * FROM acuerdos, sesiones");
-                                            $message_row=$obj-> fetch_all();
-                                            foreach($message_row as $row):
-                                            ?>
+                                            if (isset($_POST['buscar'])) {
+                                                $busqueda = trim($_POST['buscar']);
+                                                //$busqueda = $_POST['buscar'];
+                                                $obj->Normal_Query("SELECT * FROM acuerdos, sesiones WHERE titulo_acuerdo like '%" . $busqueda . "%'");
+                                                $message_row = $obj->fetch_all();
+                                                foreach ($message_row as $row) :
+                                                ?>
                                             <tr class="tr-shadow">
-                                                <td><?php echo $row->id_acuerdo,"<br>";?></td>
+                                                <td><?php echo $row->id_acuerdo, "<br>"; ?></td>
                                                 <td>
-                                                    <span class="block-email"><?php echo $row->titulo_sesion,"<br>";?></span>
+                                                    <span class="block-email"><?php echo $row->titulo_sesion, "<br>"; ?></span>
                                                 </td>
-                                                <td class="desc"><?php echo $row->titulo_acuerdo,"<br>";?></td>
-                                                <td class="desc"><?php echo $row->archivo,"<br>";?></td>
-                                                <td><?php echo $row->fecha_acuerdo,"<br>";?></td>
+                                                <td class="desc"><?php echo $row->titulo_acuerdo, "<br>"; ?></td>
+                                                <td class="desc"><?php echo $row->archivo, "<br>"; ?></td>
+                                                <td><?php echo $row->fecha_acuerdo, "<br>"; ?></td>
                                                 <td>
-                                                    <span class="status--process"><?php echo $row->fecha_finiquito,"<br>";?></span>
+                                                    <span class="status--process"><?php echo $row->fecha_finiquito, "<br>"; ?></span>
                                                 </td>
                                                 <td>
                                                     <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                            <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Ver">
                                                             <a href="cargar.php"> <i class="zmdi zmdi-more"></i></a>
                                                         </button>
@@ -108,7 +124,41 @@ $obj = new base_class;
                                             <tr class="spacer"></tr>
                                             <?php
                                             endforeach;
+                                        } else {
+                                            $obj->Normal_Query("SELECT * FROM acuerdos, sesiones");
+                                            $message_row = $obj->fetch_all();
+                                            foreach ($message_row as $row) :
                                             ?>
+                                            <tr class="tr-shadow">
+                                                <td><?php echo $row->id_acuerdo, "<br>"; ?></td>
+                                                <td>
+                                                    <span class="block-email"><?php echo $row->titulo_sesion, "<br>"; ?></span>
+                                                </td>
+                                                <td class="desc"><?php echo $row->titulo_acuerdo, "<br>"; ?></td>
+                                                <td class="desc"><?php echo $row->archivo, "<br>"; ?></td>
+                                                <td><?php echo $row->fecha_acuerdo, "<br>"; ?></td>
+                                                <td>
+                                                    <span class="status--process"><?php echo $row->fecha_finiquito, "<br>"; ?></span>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                            <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Ver">
+                                                            <a href="cargar.php"> <i class="zmdi zmdi-more"></i></a>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <?php
+                                            endforeach;
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>

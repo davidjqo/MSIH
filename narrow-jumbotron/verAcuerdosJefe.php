@@ -66,21 +66,64 @@ $obj = new base_class;
                                             <i class="zmdi zmdi-filter-list"></i>Filtros</button>
                                         </div>
                                     </div>
-                                    <div class="table-responsive table-responsive-data2">
-                                        <table class="table table-data2">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Sesión</th>
-                                                    <th>Acuerdo</th>
-                                                    <th>Archivo</th>
-                                                    <th>Creación</th>
-                                                    <th>Finiquito</th>
-                                                </tr>
-                                            </thead>
+                                    <form class="form-header" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                                        <input class="au-input au-input--xl" type="text" name="buscar" placeholder="Buscar..."/>
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Sesión</th>
+                                                <th>Acuerdo</th>
+                                                <th>Archivo</th>
+                                                <th>Creación</th>
+                                                <th>Finiquito</th>
+                                            </tr>
+                                        </thead>
                                         <tbody>
                                             <?php
-                                            $obj->Normal_Query("SELECT  * FROM acuerdos, sesiones");
+                                            if (isset($_POST['buscar'])) {
+                                                $busqueda = trim($_POST['buscar']);
+                                                //$busqueda = $_POST['buscar'];
+                                                $obj->Normal_Query("SELECT * FROM acuerdos, sesiones WHERE titulo_acuerdo like '%" . $busqueda . "%'");
+                                                $message_row = $obj->fetch_all();
+                                                foreach ($message_row as $row) :
+                                                ?>
+                                            <tr class="tr-shadow">
+                                                <td><?php echo $row->id_acuerdo, "<br>"; ?></td>
+                                                <td>
+                                                    <span class="block-email"><?php echo $row->titulo_sesion, "<br>"; ?></span>
+                                                </td>
+                                                <td class="desc"><?php echo $row->titulo_acuerdo, "<br>"; ?></td>
+                                                <td class="desc"><?php echo $row->archivo, "<br>"; ?></td>
+                                                <td><?php echo $row->fecha_acuerdo, "<br>"; ?></td>
+                                                <td>
+                                                    <span class="status--process"><?php echo $row->fecha_finiquito, "<br>"; ?></span>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                            <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Ver">
+                                                            <a href="cargar.php"> <i class="zmdi zmdi-more"></i></a>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <?php
+                                            endforeach;
+                                        } else {
+                                            $obj->Normal_Query("SELECT * FROM acuerdos, sesiones");
                                             $message_row = $obj->fetch_all();
                                             foreach ($message_row as $row) :
                                             ?>
@@ -94,12 +137,15 @@ $obj = new base_class;
                                                 <td><?php echo $row->fecha_acuerdo, "<br>"; ?></td>
                                                 <td>
                                                     <span class="status--process"><?php echo $row->fecha_finiquito, "<br>"; ?></span>
-                                                </td>                                                  
+                                                </td>
                                                 <td>
-                                                    <div class="table-data-feature">                                                       
+                                                    <div class="table-data-feature">
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                            <i class="zmdi zmdi-edit"></i>
-                                                        </button>                                                       
+                                                            <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Ver">
                                                             <a href="cargar.php"> <i class="zmdi zmdi-more"></i></a>
                                                         </button>
@@ -109,7 +155,8 @@ $obj = new base_class;
                                             <tr class="spacer"></tr>
                                             <?php
                                             endforeach;
-                                            ?>
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>

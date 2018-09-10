@@ -1,5 +1,6 @@
 <!-- Logo Muni -->
 <link rel="icon" type="image/jpg" href="../dist/img/logo.jpg"/>
+
 <!-- Fontfaces CSS-->
 <link href="css/font-face.css" rel="stylesheet" media="all">
 <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">

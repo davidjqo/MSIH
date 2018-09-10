@@ -40,6 +40,7 @@ $obj = new base_class;
                                 <div class="col-md-12">
                                     <!-- DATA TABLE -->
                                     <h3 class="title-5 m-b-35">Acuerdos registrados</h3>
+
                                     <div class="table-data__tool">
                                         <div class="table-data__tool-left">
                                             <div class="rs-select2--light rs-select2--md">
@@ -50,6 +51,7 @@ $obj = new base_class;
                                                 </select>
                                             <div class="dropDownSelect2"></div>
                                         </div>
+
                                         <div class="rs-select2--light rs-select2--sm">
                                             <select class="js-select2" name="time">
                                                 <option selected="selected">Sesión</option>
@@ -61,6 +63,14 @@ $obj = new base_class;
                                         <button class="au-btn-filter">
                                         <i class="zmdi zmdi-filter-list"></i>Filtros</button>
                                     </div>
+
+                                    <form class="form-header" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                                        <input class="au-input au-input--xl" type="text" name="buscar" placeholder="Buscar..."/>
+                                        <button class="au-btn--submit" type="submit">
+                                            <i class="zmdi zmdi-search"></i>
+                                        </button>
+                                    </form>
+                                    
                                 </div>
 
                                 <div class="table-responsive table-responsive-data2">
@@ -77,6 +87,42 @@ $obj = new base_class;
                                         </thead>
                                         <tbody>
                                             <?php
+                                            if (isset($_POST['buscar'])) {
+                                                $busqueda = trim($_POST['buscar']);
+                                                //$busqueda = $_POST['buscar'];
+                                                $obj->Normal_Query("SELECT * FROM acuerdos, sesiones WHERE titulo_acuerdo like '%" . $busqueda . "%'");
+                                                $message_row = $obj->fetch_all();
+                                                foreach ($message_row as $row) :
+                                                ?>
+                                            <tr class="tr-shadow">
+                                                <td><?php echo $row->id_acuerdo, "<br>"; ?></td>
+                                                <td>
+                                                    <span class="block-email"><?php echo $row->titulo_sesion, "<br>"; ?></span>
+                                                </td>
+                                                <td class="desc"><?php echo $row->titulo_acuerdo, "<br>"; ?></td>
+                                                <td class="desc"><?php echo $row->archivo, "<br>"; ?></td>
+                                                <td><?php echo $row->fecha_acuerdo, "<br>"; ?></td>
+                                                <td>
+                                                    <span class="status--process"><?php echo $row->fecha_finiquito, "<br>"; ?></span>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                            <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Ver">
+                                                            <a href="cargar.php"> <i class="zmdi zmdi-more"></i></a>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
+                                            <?php
+                                            endforeach;
+                                        } else {
                                             $obj->Normal_Query("SELECT * FROM acuerdos, sesiones");
                                             $message_row = $obj->fetch_all();
                                             foreach ($message_row as $row) :
@@ -109,7 +155,8 @@ $obj = new base_class;
                                             <tr class="spacer"></tr>
                                             <?php
                                             endforeach;
-                                            ?>
+                                        }
+                                        ?>
                                         </tbody>
                                     </table>
                                 </div>

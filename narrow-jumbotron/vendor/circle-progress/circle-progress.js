@@ -9,7 +9,7 @@
  */
 // UMD factory - https://github.com/umdjs/umd/blob/d31bb6ee7098715e019f52bdfe27b3e4bfd2b97e/templates/jqueryPlugin.js
 // Uses AMD, CommonJS or browser globals to create a jQuery plugin.
-(function(factory) {
+(function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD - register as an anonymous module
     define(['jquery'], factory);
@@ -22,7 +22,7 @@
     // Browser globals
     factory(jQuery);
   }
-})(function($) {
+})(function ($) {
   /**
    * Inner implementation of the circle progress bar.
    * The class is not exposed _yet_ but you can create an instance through jQuery method call.
@@ -200,7 +200,7 @@
      *
      * @param {object} config - You can customize any class member (property or method).
      */
-    init: function(config) {
+    init: function (config) {
       $.extend(this, config);
       this.radius = this.size / 2;
       this.initWidget();
@@ -213,7 +213,7 @@
      * Initialize `<canvas>`.
      * @protected
      */
-    initWidget: function() {
+    initWidget: function () {
       if (!this.canvas)
         this.canvas = $('<canvas>')[this.insertMode == 'prepend' ? 'prependTo' : 'appendTo'](this.el)[0];
 
@@ -235,7 +235,7 @@
      * It could do this async (on image load).
      * @protected
      */
-    initFill: function() {
+    initFill: function () {
       var self = this,
         fill = this.fill,
         ctx = this.ctx,
@@ -245,7 +245,9 @@
         throw Error("The fill is not specified!");
 
       if (typeof fill == 'string')
-        fill = {color: fill};
+        fill = {
+          color: fill
+        };
 
       if (fill.color)
         this.arcFill = fill.color;
@@ -258,11 +260,11 @@
         } else if (gr.length > 1) {
           var ga = fill.gradientAngle || 0, // gradient direction angle; 0 by default
             gd = fill.gradientDirection || [
-                size / 2 * (1 - Math.cos(ga)), // x0
-                size / 2 * (1 + Math.sin(ga)), // y0
-                size / 2 * (1 + Math.cos(ga)), // x1
-                size / 2 * (1 - Math.sin(ga))  // y1
-              ];
+              size / 2 * (1 - Math.cos(ga)), // x0
+              size / 2 * (1 + Math.sin(ga)), // y0
+              size / 2 * (1 + Math.cos(ga)), // x1
+              size / 2 * (1 - Math.sin(ga)) // y1
+            ];
 
           var lg = ctx.createLinearGradient.apply(ctx, gd);
 
@@ -312,7 +314,7 @@
      * Draw the circle.
      * @protected
      */
-    draw: function() {
+    draw: function () {
       if (this.animation)
         this.drawAnimated(this.value);
       else
@@ -324,7 +326,7 @@
      * @protected
      * @param {number} v - Frame value.
      */
-    drawFrame: function(v) {
+    drawFrame: function (v) {
       this.lastFrameValue = v;
       this.ctx.clearRect(0, 0, this.size, this.size);
       this.drawEmptyArc(v);
@@ -336,7 +338,7 @@
      * @protected
      * @param {number} v - Frame value.
      */
-    drawArc: function(v) {
+    drawArc: function (v) {
       if (v === 0)
         return;
 
@@ -366,7 +368,7 @@
      * @protected
      * @param {number} v - Frame value.
      */
-    drawEmptyArc: function(v) {
+    drawEmptyArc: function (v) {
       var ctx = this.ctx,
         r = this.radius,
         t = this.getThickness(),
@@ -406,7 +408,7 @@
      * @protected
      * @param {number} v - Final value.
      */
-    drawAnimated: function(v) {
+    drawAnimated: function (v) {
       var self = this,
         el = this.el,
         canvas = $(this.canvas);
@@ -416,16 +418,20 @@
       el.trigger('circle-animation-start');
 
       canvas
-        .css({animationProgress: 0})
-        .animate({animationProgress: 1}, $.extend({}, this.animation, {
-          step: function(animationProgress) {
+        .css({
+          animationProgress: 0
+        })
+        .animate({
+          animationProgress: 1
+        }, $.extend({}, this.animation, {
+          step: function (animationProgress) {
             var stepValue = self.animationStartValue * (1 - animationProgress) + v * animationProgress;
             self.drawFrame(stepValue);
             el.trigger('circle-animation-progress', [animationProgress, stepValue]);
           }
         }))
         .promise()
-        .always(function() {
+        .always(function () {
           // trigger on both successful & failure animation end
           el.trigger('circle-animation-end');
         });
@@ -437,7 +443,7 @@
      * @protected
      * @returns {number}
      */
-    getThickness: function() {
+    getThickness: function () {
       return $.isNumeric(this.thickness) ? this.thickness : this.size / 14;
     },
 
@@ -446,7 +452,7 @@
      * @protected
      * @return {number}
      */
-    getValue: function() {
+    getValue: function () {
       return this.value;
     },
 
@@ -455,7 +461,7 @@
      * @protected
      * @param {number} newValue
      */
-    setValue: function(newValue) {
+    setValue: function (newValue) {
       if (this.animation)
         this.animationStartValue = this.lastFrameValue;
       this.value = newValue;
@@ -470,7 +476,7 @@
   };
 
   // ease-in-out-cubic
-  $.easing.circleProgressEasing = function(x) {
+  $.easing.circleProgressEasing = function (x) {
     if (x < 0.5) {
       x = 2 * x;
       return 0.5 * x * x * x;
@@ -506,7 +512,7 @@
    * @see CircleProgress
    * @alias "$(...).circleProgress"
    */
-  $.fn.circleProgress = function(configOrCommand, commandArgument) {
+  $.fn.circleProgress = function (configOrCommand, commandArgument) {
     var dataName = 'circle-progress',
       firstInstance = this.data(dataName);
 
@@ -523,13 +529,13 @@
         return firstInstance.getValue();
       } else {
         var newValue = arguments[1];
-        return this.each(function() {
+        return this.each(function () {
           $(this).data(dataName).setValue(newValue);
         });
       }
     }
 
-    return this.each(function() {
+    return this.each(function () {
       var el = $(this),
         instance = el.data(dataName),
         config = $.isPlainObject(configOrCommand) ? configOrCommand : {};

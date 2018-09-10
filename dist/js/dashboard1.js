@@ -4,7 +4,7 @@ Author: Wrappixel
 Email: niravjoshi87@gmail.com
 File: js
 */
-$(function() {
+$(function () {
     "use strict";
 
     // ============================================================== 
@@ -28,7 +28,7 @@ $(function() {
             onlyInteger: true,
             scaleMinSpace: 40,
             offset: 20,
-            labelInterpolationFnc: function(value) {
+            labelInterpolationFnc: function (value) {
                 return (value / 10) + 'k';
             }
         },
@@ -40,7 +40,7 @@ $(function() {
     // ============================================================== 
     // Our Visitor
     // ============================================================== 
-    var sparklineLogin = function() {
+    var sparklineLogin = function () {
         $('#earnings').sparkline([6, 10, 9, 11, 9, 10, 12, 10, 9, 11, 9, 10, 12, 10, 9, 11, 9], {
             type: 'bar',
             height: '40',
@@ -53,7 +53,7 @@ $(function() {
     };
     var sparkResize;
 
-    $(window).resize(function(e) {
+    $(window).resize(function (e) {
         clearTimeout(sparkResize);
         sparkResize = setTimeout(sparklineLogin, 500);
     });
