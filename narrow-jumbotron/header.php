@@ -68,7 +68,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt="John Doe" />
+                                <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt=<?php echo $_SESSION['user_name']; ?> />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#"><?php echo ucfirst($_SESSION['user_name']); ?></a>
@@ -77,7 +77,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt="John Doe" />
+                                            <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt=<?php echo $_SESSION['user_name']; ?> />
                                         </a>
                                     </div>
                                     <div class="content">

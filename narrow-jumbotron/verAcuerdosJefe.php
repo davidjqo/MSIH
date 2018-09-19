@@ -46,22 +46,38 @@ $obj = new base_class;
                                     <h3 class="title-5 m-b-35">Acuerdos registrados</h3>
                                     <div class="table-data__tool">
                                         <div class="table-data__tool-left">
+                                        <div class="table-data__tool-left">
                                             <div class="rs-select2--light rs-select2--md">
                                                 <select class="js-select2" name="property">
-                                                    <option selected="selected">Departamento</option>
-                                                    <option value="">Option 1</option>
-                                                    <option value="">Option 2</option>
+                                                    <option selected='selected' disabled>Departamento</option>
+                                                    <?php
+                                                    $obj->Normal_Query("SELECT * FROM departamentos");
+                                                    $message_option = $obj->fetch_all();
+                                                    foreach ($message_option as $option) :
+                                                    ?>
+                                                    <option value="<?php echo $option->nombre; ?>"><?php echo $option->nombre, "<br>"; ?></option>
+                                                    <?php 
+                                                    endforeach;
+                                                    ?>
                                                 </select>
-                                                <div class="dropDownSelect2"></div>
-                                            </div>
-                                            <div class="rs-select2--light rs-select2--sm">
-                                                <select class="js-select2" name="time">
-                                                    <option selected="selected">Sesión</option>
-                                                    <option value="">3 Days</option>
-                                                    <option value="">1 Week</option>
-                                                </select>
-                                                <div class="dropDownSelect2"></div>
-                                            </div>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
+
+                                        <div class="rs-select2--light rs-select2--sm">
+                                            <select class="js-select2" name="time">
+                                                <option selected="selected" disabled>Sesión</option>
+                                                <?php
+                                                $obj->Normal_Query("SELECT * FROM sesiones");
+                                                $message_option = $obj->fetch_all();
+                                                foreach ($message_option as $option) :
+                                                ?>
+                                                <option value="<?php echo $option->titulo_sesion; ?>"><?php echo $option->titulo_sesion, "<br>"; ?></option>
+                                                <?php 
+                                                endforeach;
+                                                ?>
+                                            </select>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                             <button class="au-btn-filter">
                                             <i class="zmdi zmdi-filter-list"></i>Filtros</button>
                                         </div>
@@ -77,7 +93,6 @@ $obj = new base_class;
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Sesión</th>
                                                 <th>Acuerdo</th>
                                                 <th>Archivo</th>
@@ -94,10 +109,9 @@ $obj = new base_class;
                                                 $message_row = $obj->fetch_all();
                                                 foreach ($message_row as $row) :
                                                 ?>
-                                            <tr class="tr-shadow">
-                                                <td><?php echo $row->id_acuerdo, "<br>"; ?></td>
+                                            <tr class="tr-shadow">                                              
                                                 <td>
-                                                    <span class="block-email"><?php echo $row->titulo_sesion, "<br>"; ?></span>
+                                                    <span class="block-email" name="titulo_sesion" method="POST"><?php echo $row->titulo_sesion, "<br>"; ?></span>
                                                 </td>
                                                 <td class="desc"><?php echo $row->titulo_acuerdo, "<br>"; ?></td>
                                                 <td class="desc"><?php echo $row->archivo, "<br>"; ?></td>
@@ -108,7 +122,7 @@ $obj = new base_class;
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                            <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
+                                                            <a href="editarAcuerdo.php"> <i class="zmdi zmdi-edit"></i></a>
                                                         </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                                             <i class="zmdi zmdi-delete"></i>
@@ -128,7 +142,6 @@ $obj = new base_class;
                                             foreach ($message_row as $row) :
                                             ?>
                                             <tr class="tr-shadow">
-                                                <td><?php echo $row->id_acuerdo, "<br>"; ?></td>
                                                 <td>
                                                     <span class="block-email"><?php echo $row->titulo_sesion, "<br>"; ?></span>
                                                 </td>
@@ -140,7 +153,7 @@ $obj = new base_class;
                                                 </td>
                                                 <td>
                                                     <div class="table-data-feature">
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Editar" type='submit' name='editar'>
                                                             <a href="editarAcuerdo.php">  <i class="zmdi zmdi-edit"></i></a>
                                                         </button>
                                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">

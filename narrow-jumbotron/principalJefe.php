@@ -107,8 +107,8 @@ $obj = new base_class;
                                         <table class="table table-data2">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>Nombre</th>
+                                                    <th>Apellido</th>
                                                     <th>Correo</th>
                                                     <th>Imagen</th>
                                                     <th>Estado</th>
@@ -121,9 +121,11 @@ $obj = new base_class;
                                                 foreach ($message_row as $row) :
                                                 ?>
                                                 <tr class="tr-shadow">        
-                                                    <td><?php echo $row->id_usuario, "<br>"; ?></td>
                                                     <td>
                                                         <span class="block-email"><?php echo $row->nombre, "<br>"; ?></span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="block-email"><?php echo $row->primer_apellido, "<br>"; ?></span>
                                                     </td>
                                                     <td class="desc"><?php echo $row->email, "<br>"; ?></td>
                                                     <td><?php echo $row->image, "<br>"; ?></td>

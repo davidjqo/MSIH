@@ -142,7 +142,7 @@ if (isset($_POST['login'])) {
                 <div class="row" style="padding-top: 1rem">
                     <div class="col-md-4"></div>
                     <div class="col-md-6">
-                        <button type="submit" name="login"class="btn btn-success"><i class="fa fa-sign-in"></i> Iniciar sesión</button>
+                        <button type="submit" name="login" class="btn btn-success"><i class="fa fa-sign-in"></i> Iniciar sesión</button>
                     </div>
                 </div>
             </form>

@@ -1,7 +1,9 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
-            <h5>Control de acuerdos MSIH</h5>
+            <h5>
+            <img src="../dist/img/logoMuni.png" alt="Logo" height="14px" width="21px" style="margin: 5px;">Control de acuerdos MSIH
+            </h5>
         </a>  
     </div>
     <div class="menu-sidebar__content js-scrollbar1">

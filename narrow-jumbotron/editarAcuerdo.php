@@ -111,7 +111,7 @@ $obj = new base_class;
                                     <div class="account-wrap">
                                         <div class="account-item clearfix js-item-menu">
                                             <div class="image">
-                                                <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt="John Doe" />
+                                                <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt=<?php echo $_SESSION['user_name']; ?> />
                                             </div>
                                             <div class="content">
                                                 <a class="js-acc-btn" href="#"><?php echo ucfirst($_SESSION['user_name']); ?></a>
@@ -120,7 +120,7 @@ $obj = new base_class;
                                                 <div class="info clearfix">
                                                     <div class="image">
                                                         <a href="#">
-                                                            <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt="John Doe" />
+                                                            <img src="../dist/img/<?php echo $_SESSION['user_image']; ?>" alt=<?php echo $_SESSION['user_name']; ?> />
                                                         </a>
                                                     </div>
                                                     <div class="content">
@@ -172,7 +172,17 @@ $obj = new base_class;
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-archive"></i>
                                                     </div>
-                                                    <input type="text" id="disabled-input" name="disabled-input" disabled=""placeholder="<?php echo $_SESSION['titulo_sesion']; ?>" class="form-control">
+                                                    <input type="text" id="disabled-input" name="disabled-input" disabled="" placeholder="verAcuerdos.php?titulo_sesion=<?php echo $titulo_sesion ?>" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="street" class=" form-control-label">Acuerdo</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-archive"></i>
+                                                    </div>
+                                                    <input type="text" id="disabled-input" name="disabled-input" disabled="" placeholder="<?php echo $_SESSION['titulo_acuerdo']; ?>" class="form-control">
                                                 </div>
                                             </div>
 
@@ -182,7 +192,7 @@ $obj = new base_class;
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-archive"></i>
                                                     </div>
-                                                    <input type="text" id="disabled-input" name="disabled-input" disabled=""placeholder="Informática" class="form-control">
+                                                    <input type="text" id="disabled-input" name="disabled-input" disabled="" placeholder="Informática" class="form-control">
                                                 </div>
                                             </div>
 
@@ -192,7 +202,7 @@ $obj = new base_class;
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar-o"></i>
                                                     </div>
-                                                    <input type="text" id="disabled-input" name="disabled-input" disabled=""placeholder="<?php echo $_SESSION['fecha_acuerdo']; ?>" class="form-control">
+                                                    <input type="text" id="disabled-input" name="disabled-input" disabled="" placeholder="<?php echo $_SESSION['fecha_acuerdo']; ?>" class="form-control">
                                                 </div>
                                             </div>
 
@@ -202,7 +212,7 @@ $obj = new base_class;
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar-o"></i>
                                                         </div>
-                                                        <input type="text" id="disabled-input" name="disabled-input" disabled=""placeholder="<?php echo $_SESSION['fecha_finiquito']; ?>" class="form-control">
+                                                        <input type="text" id="disabled-input" name="disabled-input" disabled="" placeholder="<?php echo $_SESSION['fecha_finiquito']; ?>" class="form-control">
                                                         <input id="cc-pament" name="fecha_finiquito" type="date" class="form-control" aria-required="true" aria-invalid="false" placeholder="Dia">
                                                     </div>
                                                 </div>

@@ -105,8 +105,8 @@ $obj = new base_class;
                                         <table class="table table-data2">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>Nombre</th>
+                                                    <th>Apellido</th>
                                                     <th>Correo</th>
                                                     <th>Imagen</th>
                                                     <th>Estado</th>
@@ -114,14 +114,16 @@ $obj = new base_class;
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $obj->Normal_Query("SELECT  * FROM users");
+                                                $obj->Normal_Query("SELECT  * FROM usuarios");
                                                 $message_row = $obj->fetch_all();
                                                 foreach ($message_row as $row) :
                                                 ?>
                                                 <tr class="tr-shadow">                                                    
-                                                    <td><?php echo $row->id, "<br>"; ?></td>
+                                                    <td style="vertical-align: middle;">
+                                                        <span class="block-email"><?php echo $row->nombre, "<br>"; ?></span>
+                                                    </td>
                                                     <td>
-                                                        <span class="block-email"><?php echo $row->name, "<br>"; ?></span>
+                                                        <span class="block-email"><?php echo $row->primer_apellido, "<br>"; ?></span>
                                                     </td>
                                                     <td class="desc"><?php echo $row->email, "<br>"; ?></td>
                                                     <td><?php echo $row->image, "<br>"; ?></td>
@@ -137,7 +139,7 @@ $obj = new base_class;
                                                             <button class="item" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                                                 <i class="zmdi zmdi-delete"></i>
                                                             </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Mas">
+                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Más">
                                                                 <i class="zmdi zmdi-more"></i>
                                                             </button>
                                                         </div>
